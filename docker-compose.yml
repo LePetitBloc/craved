@@ -1,0 +1,31 @@
+version: '3'
+services:
+  wallet:
+    image: 'lepetitbloc/craved:v2.5.0.3'
+    restart: always
+    ports:
+      - '48882:48882'
+      - '48883:48883'
+    command:
+      - '-rpcuser=crave-wallet'
+      - '-rpcpassword=eisbd4hq'
+      - '-server=1'
+      - '-listen=0'
+    volumes:
+      - './wallet/:/home/crave/'
+  masternode:
+    image: 'lepetitbloc/craved:v2.5.0.3'
+    restart: always
+    ports:
+      - '48882:48882'
+      - '48883:48883'
+    command:
+      - '-rpcuser=crave-mn01'
+      - '-rpcpassword=eisbd4hq'
+      - '-rpcallowip=::/0'
+      - '-server=0'
+      - '-listen=1'
+      - '-masternode=1'
+      - '-masternodeprivkey=YourMasternodePrivKey'
+    volumes:
+      - './masternode/:/home/crave/'

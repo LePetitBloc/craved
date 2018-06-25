@@ -1,0 +1,44 @@
+file:
+  /usr/local/bin/craved:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /usr/local/bin/crave-cli:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /usr/local/bin/crave-tx:
+    exists: true
+    mode: '0755'
+    filetype: file
+  /home/crave/.crave/crave.conf:
+    exists: true
+    filetype: file
+    contains:
+      - rpcuser
+      - rpcpassword
+  /home/crave/.crave/masternode.conf:
+    exists: true
+    filetype: file
+    contains:
+      - Masternode config file
+  /home/crave/data:
+    filetype: directory
+    exists: true
+port:
+  'tcp:48882':
+    listening: true
+  'tcp:48883':
+    listening: true
+user:
+  crave:
+    exists: true
+    groups:
+      - crave
+    home: /home/crave
+group:
+  crave:
+    exists: true
+process:
+  craved:
+    running: true
